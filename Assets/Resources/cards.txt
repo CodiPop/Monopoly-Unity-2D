@@ -1,0 +1,3 @@
+Discolo,500;
+San Patricio,200;
+Basilica de San Pedro, 500;
