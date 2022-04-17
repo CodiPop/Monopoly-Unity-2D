@@ -238,6 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardImage: {fileID: 1218465414}
   cardsInfo: {fileID: 4900000, guid: a32f602ba489544f6b9a5c27bede682f, type: 3}
+  testCircle: {fileID: 4495433627976097213, guid: 2ca508c10cf4943e3a5595dd3d09e6e9, type: 3}
+  instance: {fileID: 0}
 --- !u!212 &1218465416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -298,8 +300,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218465414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24316108, y: -0.45592707, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
