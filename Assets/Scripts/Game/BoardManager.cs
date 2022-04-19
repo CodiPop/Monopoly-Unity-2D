@@ -37,7 +37,8 @@ public class BoardManager : MonoBehaviour
     {
         Card c = getNext();
         instance.transform.DOJump(new Vector3(c.position.x, c.position.y, -1),1.0f,2,duration: 1.0f);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+        AnimationsManager.Instance.SetCardsInOriginalPosition();
         StartCoroutine(ExampleCoroutine());
     }
 
