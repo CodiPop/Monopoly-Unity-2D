@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BoardManager : MonoBehaviour
 {
@@ -12,22 +13,6 @@ public class BoardManager : MonoBehaviour
     private float width, height,cornerSize, cardWidthSize, cardHeightSize;
     private ArrayList cards;
     private int pointer;
-
-    struct Card
-    {
-        public Vector2 position;
-        string name;
-        float price;
-        GameCharacter owner;
-        
-        public Card(Vector2 position,string name, float price)
-        {
-            this.position = position;
-            this.name = name;
-            this.price = price;
-            this.owner = null;
-        }
-    }
 
     void Start()
     {
@@ -51,7 +36,7 @@ public class BoardManager : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
         Card c = getNext();
-        instance.transform.position = new Vector3(c.position.x, c.position.y, -1);
+        instance.transform.DOJump(new Vector3(c.position.x, c.position.y, -1),1.0f,2,duration: 1.0f);
         yield return new WaitForSeconds(1);
         StartCoroutine(ExampleCoroutine());
     }
@@ -68,28 +53,74 @@ public class BoardManager : MonoBehaviour
 private void setBoardBounds()
     {
         SpriteRenderer sprite = boardImage.GetComponent<SpriteRenderer>();
-        width = -1*((sprite.bounds.size.x)/2);
-        height = -1 * ((sprite.bounds.size.y) / 2);
+        width = sprite.bounds.size.x;
+        height = sprite.bounds.size.y;
 
-        cornerSize = (float)(width * 0.13);
+        cornerSize = (float)(width * 0.14);
         cardHeightSize = cornerSize;
-        cardWidthSize = (float)(width * ((1 - (0.13*2))/9));
+        cardWidthSize = (float)(width * ((1 - 0.28)/9));
     }
 
     private void setRows()
     {
         cards = new ArrayList();
         // Set first row
-        float half = height + (cardHeightSize / 2);
+        float halfWidth = (cardWidthSize / 2);
+        float halfHeight = (cardHeightSize / 2);
         cards.Add(new Card(
-            new Vector2(height - half,width),
+            new Vector2(width - halfHeight, halfHeight),
             "pepita puta",
             500)
         );
         for (int i = 0; i < 9; i++)
         {
             cards.Add(new Card(
-               new Vector2(width-cornerSize-(i* cardWidthSize)-half, height-half),
+               new Vector2(width-cornerSize-(i* cardWidthSize)-halfWidth, halfHeight),
+               "pepita puta",
+               500, $"/Images/Row1/{i+1}.png")
+            );
+        }
+
+        // Set second row
+        cards.Add(new Card(
+            new Vector2(halfHeight, halfHeight),
+            "pepita puta",
+            500)
+        );
+        for (int i = 9; i > 0; i--)
+        {
+            cards.Add(new Card(
+               new Vector2(halfHeight,height-(i*cardWidthSize)-cornerSize-halfWidth),
+               "pepita puta",
+               500)
+            );
+        }
+
+        // Set third row
+        cards.Add(new Card(
+            new Vector2(halfHeight, height - halfHeight),
+            "pepita puta",
+            500)
+        );
+        for (int i = 9; i > 0; i--)
+        {
+            cards.Add(new Card(
+               new Vector2(width - cornerSize - (i * cardWidthSize) - halfWidth, height-halfHeight),
+               "pepita puta",
+               500)
+            );
+        }
+
+        // Set fourth row
+        cards.Add(new Card(
+            new Vector2(width - halfHeight, height - halfHeight),
+            "pepita puta",
+            500)
+        );
+        for (int i = 0; i < 9; i++)
+        {
+            cards.Add(new Card(
+               new Vector2(width - halfHeight, height - (i * cardWidthSize) - cornerSize - halfWidth),
                "pepita puta",
                500)
             );
