@@ -19,14 +19,9 @@ public class Dice : MonoBehaviour {
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
 	}
 	
-    // If you left click over the dice then RollTheDice coroutine is started
-    private void OnMouseDown()
-    {
-        StartCoroutine("RollTheDice");
-    }
-
+   
     // Coroutine that rolls the dice
-    private IEnumerator RollTheDice()
+    public int RollTheDice()
     {
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
@@ -46,7 +41,7 @@ public class Dice : MonoBehaviour {
             rend.sprite = diceSides[randomDiceSide];
 
             // Pause before next itteration
-            yield return new WaitForSeconds(0.05f);
+              new WaitForSeconds(0.5f);
         }
 
         // Assigning final side so you can use this value later in your game
@@ -54,6 +49,6 @@ public class Dice : MonoBehaviour {
         finalSide = randomDiceSide + 1;
 
         // Show final dice value in Console
-        Debug.Log(finalSide);
+        return (finalSide);
     }
 }
