@@ -7,10 +7,7 @@ public class Boton : MonoBehaviour
     public Dice D1;
     public Dice D2;
     
-    void Start()
-    {
-        
-    }
+
     private void OnMouseDown()
     {
         D1.RollTheDice();

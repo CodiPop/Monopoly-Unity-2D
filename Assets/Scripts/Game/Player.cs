@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private ArrayList cards;
-    private GameCharacter characterImg;
+    private GameObject model;
     private int money;
     private int currentIndex;
     
@@ -21,4 +21,6 @@ public class Player : MonoBehaviour
     {
         
     }
+
+
 }
