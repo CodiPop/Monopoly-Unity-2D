@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Player : MonoBehaviour
+public class Player 
 {
-    private ArrayList cards;
-    private GameObject model;
-    private int money;
-    private int currentIndex;
+    public ArrayList cards;
+    public GameObject model;
+    public int money;
+    public int currentIndex;
     
 
     void Start()
     {
-        
+        currentIndex = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 
 
 }

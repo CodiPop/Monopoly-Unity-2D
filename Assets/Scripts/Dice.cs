@@ -5,15 +5,10 @@ public class Dice : MonoBehaviour {
 
     private Sprite[] diceSides;
     private SpriteRenderer rend;
-    public byte value;
+    public int value;
 
-	// Use this for initialization
 	private void Start () {
-
-        // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
-
-        // Load dice sides sprites to array from DiceSides subfolder of Resources folder
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
 	}
 
@@ -25,11 +20,9 @@ public class Dice : MonoBehaviour {
             values.Add(Random.Range(0, 6));
         }
         StartCoroutine(RollDice(values));
-        value = (byte) values[20];
+        value = (int) values[20]+1;
     }
-	
    
-    // Coroutine that rolls the dice
     IEnumerator RollDice(ArrayList values)
     {
         foreach (int value in values)

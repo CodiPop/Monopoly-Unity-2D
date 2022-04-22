@@ -6,35 +6,35 @@ public class Card
 {
 
     public Vector2 position;
-    private string name;
-    private GameCharacter owner;
+    public string name;
+    public GameCharacter owner;
 
     // General values
-    private string imgPath;
-    private bool hasImage = false;
-    private bool isMortaged = false;
+    public string imgPath;
+    public bool hasImage = false;
+    public bool isMortaged = false;
     private bool isCorner;
-    private byte row;
+    public byte row;
 
     // Other values
-    private bool isService = false;
-    private bool isTax = false;
-    private bool isLuxuryTax = false;
-    private bool isTransport = false;
-    private bool isLuck = false;
-    private bool isCommunity = false;
+    public bool isService = false;
+    public bool isTax = false;
+    public bool isLuxuryTax = false;
+    public bool isTransport = false;
+    public bool isLuck = false;
+    public bool isCommunity = false;
 
     // Property values
-    private byte houses = 0;
-    private byte hotels = 0;
-    private float price;
-    private float rent;
-    private float rent1house;
-    private float rent2house;
-    private float rent3house;
-    private float rent4house;
-    private float rentHotel;
-    private float mortgageValue;
+    public byte houses = 0;
+    public byte hotels = 0;
+    public float price;
+    public float rent;
+    public float rent1house;
+    public float rent2house;
+    public float rent3house;
+    public float rent4house;
+    public float rentHotel;
+    public float mortgageValue;
 
     public Card(Vector2 position, string name, byte row, float price = 0,string imgPath = null, bool isCorner = false)
     {
@@ -45,11 +45,7 @@ public class Card
         this.row = row;
         if(imgPath != null)
         {
-            if (System.IO.File.Exists(Application.dataPath + imgPath))
-            {
-                this.hasImage = true;
-            }
-            
+            this.hasImage = true;
         }
         this.imgPath = imgPath;
         this.isCorner = isCorner;
@@ -121,4 +117,6 @@ public class Card
                 return "nullcode";
         }
     }
+
+
 }

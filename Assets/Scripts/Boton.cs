@@ -4,18 +4,41 @@ using UnityEngine;
 
 public class Boton : MonoBehaviour
 {
+    public static Boton Instance;
     public Dice D1;
     public Dice D2;
-    
+    private bool BLOCKED;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+
+    }
 
     private void OnMouseDown()
     {
-        D1.RollTheDice();
-        D2.RollTheDice();
+        if (!BLOCKED)
+        {
+            D1.RollTheDice();
+            D2.RollTheDice();
+
+            TurnManager.Instance.ManageTurn(D1.value, D2.value);
+        }
     }
-    // Update is called once per frame
-    void Update()
+
+    public void turnOn()
     {
-        
+        BLOCKED = false;
     }
+
+    public void turnOff()
+    {
+        BLOCKED = true;
+
+    }
+
 }
